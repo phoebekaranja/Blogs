@@ -1,17 +1,20 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,BooleanField,SubmitField, TextAreaField
-from wtforms.validators import Required,Email,EqualTo
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField
+from wtforms.validators import Required, Email, EqualTo
 from ..models import User
+from wtforms import ValidationError
 
-class RegistrationForm(FlaskForm):
-    email = StringField('Your Email Address',validators=[Required(),Email()])
-    username = StringField('Enter your username',validators = [Required()])
-    password = PasswordField('Password',validators = [Required(), EqualTo('password_confirm',message = 'Passwords must match')])
-    password_confirm = PasswordField('Confirm Passwords',validators = [Required()])
-    submit = SubmitField('Sign Up')
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about you.',validators = [Required()])
+    submit = SubmitField('Submit')
 
-class LoginForm(FlaskForm):
-    email = StringField('Your Email Address',validators=[Required(),Email()])
-    password = PasswordField('Password',validators =[Required()])
-    remember = BooleanField('Remember me')
-    submit = SubmitField('Sign In')
+class BlogForm(FlaskForm):
+    title = StringField('Blog title',validators=[Required()])
+    content = TextAreaField('Your Blog.')
+    category = SelectField('Category',choices=[('Institutional','Institutional'),('Personal_Blog','Personal_Blog')])
+    submit = SubmitField('Submit')
+
+
+class CommentForm(FlaskForm):
+    comment_name = TextAreaField('Blog comment', validators=[Required()])
+    submit = SubmitField('Submit')
