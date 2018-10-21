@@ -106,7 +106,7 @@ class Comments(db.Model):
     @classmethod
     def get_comments(cls,id):
         comment = Comments.query.order_by (Comments.date_posted.desc()).all()
-        return comment
+        return comment 
 
     @classmethod
     def delete_comment(cls,id):

@@ -2,7 +2,7 @@ import os
 
 class Config():
      SECRET_KEY = os.environ.get('phoebe')
-# SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://pheobe:pheobe@localhost/blog'
+SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://pheobe:pheobe@localhost/blog'
 
 '''
 parent class config
@@ -21,7 +21,7 @@ SIMPLEMDE_USE_CDN = True
 
 @staticmethod
 def init_app(app):
-        pass
+    pass
 
 class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")

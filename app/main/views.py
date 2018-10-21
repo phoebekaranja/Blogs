@@ -4,7 +4,7 @@ from . import main
 from flask_login import login_required,current_user
 from .forms import UpdateProfile, BlogForm,CommentForm,SubscriberForm
 from .. import db,photos
-import markdown2
+import markdown2  
 
 @main.route('/')
 def index():
@@ -54,7 +54,7 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
-
+    
 @main.route('/blog/new',methods=['GET','POST'])
 @login_required
 def new_blog():
