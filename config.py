@@ -2,7 +2,7 @@ import os
 
 class Config():
      SECRET_KEY = os.environ.get('phoebe')
-SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://pheobe:pheobe@localhost/Blogs'
+# SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://pheobe:pheobe@localhost/blog'
 
 '''
 parent class config
@@ -27,7 +27,7 @@ class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     pass
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://bknngeno:123@localhost/blog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://pheobe@localhost/blog'
     DEBUG = True
 
 class TestConfig(Config):
